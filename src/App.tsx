@@ -1,11 +1,11 @@
 import React from 'react';
-import ProjectPage from './projects/ProjectPage';
 import './App.css';
+import Hello from './Hello';
 
 function App() {
   return (
     <div className="container">
-      <ProjectPage/>
+      <Hello name="David"/>
     </div>
   );
 }
