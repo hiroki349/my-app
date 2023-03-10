@@ -14,7 +14,7 @@ function translateStatusToErrorMessage(status: number) {
   }
 }
 
-function checStatus(response: any) {
+function checkStatus(response: any) {
   if (response.ok) {
     return response;
   } else {
@@ -54,7 +54,7 @@ const projectAPI = {
   get(page = 1, limit = 20) {
     return fetch(`${url}?_page=${page}&_limit=${limit}&_sort=name`)
       .then(delay(600))
-      .then(checStatus)
+      .then(checkStatus)
       .then(parseJSON)
       .then(convertToProjectModels)
       .catch((error: TypeError) => {
@@ -64,6 +64,24 @@ const projectAPI = {
         );
       });
   },
+
+  put(project: Project) {
+    return fetch(`${url}/${project.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(project),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(checkStatus)
+      .then(parseJSON)
+      .catch((error: TypeError) => {
+        console.log('log client error ' + error);
+        throw new Error(
+          'There was an error updating the project. Please try again.'
+        )
+      })
+  }
 };
 
 export { projectAPI };
