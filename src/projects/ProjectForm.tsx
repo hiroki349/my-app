@@ -13,10 +13,41 @@ function ProjectForm({
   onCancel
 }: ProjectFormProps) {
   const [project, setProject] = useState(initialProject);
+  const [errors, setErrors] = useState({
+    name: '',
+    description: '',
+    budget: '',
+  })
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
+    if (!isValid()) return;
     onSave(project);
   };
+
+  function validate(project: Project) {
+    let errors: any = { name: '', description: '', budget: '' };
+    if (project.name.length === 0) {
+      errors.name = 'Name is required';
+    }
+    if (project.name.length > 0 && project.name.length < 3) {
+      errors.name = 'Name needs to be at least 3 characters.';
+    }
+    if (project.description.length === 0) {
+      errors.description = 'Description is required.';
+    }
+    if (project.budget === 0) {
+      errors.budget = 'Budget must be more than $0.';
+    }
+    return errors;
+  }
+
+  function isValid() {
+    return (
+      errors.name.length === 0 &&
+      errors.description.length === 0 &&
+      errors.budget.length === 0
+    );
+  }
 
   const handleChange = (event: any) => {
     const { type, name, value, checked } = event.target;
@@ -42,6 +73,7 @@ function ProjectForm({
       updatedProject = new Project({ ...p, ...change });
       return updatedProject;
     })
+    setErrors(() => validate(updatedProject));
   }
   return (
     <form className="input-group vertical" onSubmit={handleSubmit}>
@@ -53,6 +85,11 @@ function ProjectForm({
         value={project.name}
         onChange={handleChange}
       />
+      {0 < errors.name.length && (
+        <div className="card error">
+          <p>{errors.name}</p>
+        </div>
+      )}
       <label htmlFor="description">Project Description</label>
 
       <textarea
@@ -61,6 +98,11 @@ function ProjectForm({
         value={project.description}
         onChange={handleChange}
       />
+      {0 < errors.description.length && (
+        <div className="card error">
+          <p>{errors.description}</p>
+        </div>
+      )}
       <label htmlFor="budget">Project Budget</label>
 
       <input
@@ -70,6 +112,11 @@ function ProjectForm({
         value={project.budget}
         onChange={handleChange}
       />
+      {0 < errors.budget.length && (
+        <div className="card error">
+          <p>{errors.budget}</p>
+        </div>
+      )}
       <label htmlFor="isActive">Active?</label>
       <input
         type="checkbox"
