@@ -1,15 +1,16 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { projectAPI } from '../projectAPI';
+
 import { Project } from '../Project';
+import { projectAPI } from '../projectAPI';
 import {
+  LOAD_PROJECTS_FAILURE,
   LOAD_PROJECTS_REQUEST,
   LOAD_PROJECTS_SUCCESS,
-  LOAD_PROJECTS_FAILURE,
+  ProjectState,
+  SAVE_PROJECT_FAILURE,
   SAVE_PROJECT_REQUEST,
   SAVE_PROJECT_SUCCESS,
-  SAVE_PROJECT_FAILURE,
-  ProjectState,
 } from './projectTypes';
 
 //action creators

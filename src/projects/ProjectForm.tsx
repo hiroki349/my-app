@@ -1,9 +1,10 @@
 import React, { SyntheticEvent, useState } from "react";
-import { Project } from "./Project";
 import { useDispatch } from 'react-redux';
-import { saveProject } from './state/projectActions';
-import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+
+import { Project } from "./Project";
+import { saveProject } from './state/projectActions';
 import { ProjectState } from "./state/projectTypes";
 
 interface ProjectFormProps {

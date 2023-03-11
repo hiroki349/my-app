@@ -1,17 +1,17 @@
+import { Project } from '../Project';
 import {
-  ProjectActionTypes,
-  LOAD_PROJECTS_REQUEST,
-  LOAD_PROJECTS_SUCCESS,
-  LOAD_PROJECTS_FAILURE,
+  DELETE_PROJECT_FAILURE,
   DELETE_PROJECT_REQUEST,
   DELETE_PROJECT_SUCCESS,
-  DELETE_PROJECT_FAILURE,
+  LOAD_PROJECTS_FAILURE,
+  LOAD_PROJECTS_REQUEST,
+  LOAD_PROJECTS_SUCCESS,
+  ProjectActionTypes,
+  ProjectState,
+  SAVE_PROJECT_FAILURE,
   SAVE_PROJECT_REQUEST,
   SAVE_PROJECT_SUCCESS,
-  SAVE_PROJECT_FAILURE,
-  ProjectState,
 } from './projectTypes';
-import { Project } from '../Project';
 
 export const initialProjectState: ProjectState = {
   projects: [],

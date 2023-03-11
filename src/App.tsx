@@ -1,10 +1,12 @@
-import React from 'react';
 import './App.css';
-import ProjectsPage from './projects/ProjectsPage';
-import ProjectPage from './projects/ProjectPage';
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
-import HomePage from './home/HomePage';
+
+import React from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router, NavLink,Route, Routes } from 'react-router-dom';
+
+import HomePage from './home/HomePage';
+import ProjectPage from './projects/ProjectPage';
+import ProjectsPage from './projects/ProjectsPage';
 import { store } from './state';
 
 function App() {

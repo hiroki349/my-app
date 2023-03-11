@@ -2,12 +2,13 @@ import React, {
   Fragment,
   useEffect
 } from 'react';
-import ProjectList from './ProjectList';
-import { useSelector, useDispatch } from 'react-redux';
-import { AppState } from '../state';
-import { loadProjects } from './state/projectActions';
+import { useDispatch,useSelector } from 'react-redux';
 import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
+
+import { AppState } from '../state';
+import ProjectList from './ProjectList';
+import { loadProjects } from './state/projectActions';
 import { ProjectState } from './state/projectTypes';
 
 

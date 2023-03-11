@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
+import { Project } from './Project';
 import { projectAPI } from './projectAPI';
 import ProjectDetail from './ProjectDetail';
-import { Project } from './Project';
-import { useParams } from 'react-router-dom';
 
 function ProjectPage(props: any) {
   const [loading, setLoading] = useState(false);
