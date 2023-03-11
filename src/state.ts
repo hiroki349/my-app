@@ -1,7 +1,7 @@
-import { createStore, applyMiddleware } from 'redux';
-import ReduxThunk from 'redux-thunk';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { combineReducers } from 'redux';
+import ReduxThunk from 'redux-thunk';
+
 import { initialProjectState, projectReducer } from './projects/state/projectReducer';
 import { ProjectState } from './projects/state/projectTypes';
 
